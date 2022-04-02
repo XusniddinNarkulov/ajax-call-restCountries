@@ -6,8 +6,6 @@ const input = document.querySelector('input');
 const search = document.querySelector('label');
 ///////////////////////////////////////
 
-const arr = [];
-
 // const getCountry = function (country) {
 const request = new XMLHttpRequest();
 request.open('GET', `https://restcountries.com/v2/all`);
@@ -40,7 +38,7 @@ request.addEventListener('load', function () {
 </article>
   `;
     search.addEventListener('click', function (e) {
-      e.preventDefault();
+      // e.preventDefault();
       if (input.value == data.name) {
         countriesContainer.innerHTML += html;
         countriesContainer.style.opacity = 1;
@@ -49,7 +47,7 @@ request.addEventListener('load', function () {
         console.log(arr);
       }
       if (arr.includes(data)) {
-        // countriesContainer.innerHTML = html;
+        // countriesContainer.innerHTML = ``;
         // alert("siz bu ma'lumotni ilgari kiritgansiz");
       }
     });
@@ -57,4 +55,10 @@ request.addEventListener('load', function () {
 });
 // };
 
+const arr = [];
+localStorage.setItem('local', JSON.stringify(arr));
+console.log(arr);
+let getStorage = JSON.parse(localStorage.getItem('local'));
+// if (!getStorage) return;
+console.log(getStorage);
 // getCountry('usa');
