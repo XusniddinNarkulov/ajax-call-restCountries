@@ -39,12 +39,16 @@ request.addEventListener('load', function () {
   `;
     search.addEventListener('click', function (e) {
       // e.preventDefault();
-      if (input.value == data.name) {
+      if (input.value == data.name && !arr.includes(data)) {
         countriesContainer.innerHTML += html;
         countriesContainer.style.opacity = 1;
+
         // console.log(data);
         arr.push(data);
-        console.log(arr);
+        input.value = '';
+        // localStorage.setItem('local', JSON.stringify(arr));
+        // let getStorage = JSON.parse(localStorage.getItem('local'));
+        // console.log(getStorage);
       }
       if (arr.includes(data)) {
         // countriesContainer.innerHTML = ``;
@@ -56,9 +60,3 @@ request.addEventListener('load', function () {
 // };
 
 const arr = [];
-localStorage.setItem('local', JSON.stringify(arr));
-console.log(arr);
-let getStorage = JSON.parse(localStorage.getItem('local'));
-// if (!getStorage) return;
-console.log(getStorage);
-// getCountry('usa');
